@@ -3,6 +3,7 @@
   Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
 </p>
 <input />
+<div style="height: 1000px" />
 <select>
   <option>Option</option>
 </select>
