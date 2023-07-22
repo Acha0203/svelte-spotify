@@ -29,6 +29,7 @@
           trigger: 'click',
           placement: 'bottom-end',
           interactive: true,
+          theme: 'menu',
         }}
       >
         {#if user?.images && user.images.length > 0}
@@ -47,7 +48,7 @@
               target="_blank"
               rel="noopener noreferrer"
               >View on Spotify
-              <ExternalLink focusable="false" aria-hidden />
+              <ExternalLink focusable="false" aria-hidden size={20} />
             </a>
           </li>
           <li><a href="/profile">View Profile</a></li>
@@ -85,6 +86,36 @@
     }
     &:hover {
       background-color: var(--accent-color);
+    }
+  }
+  .profile-menu-content {
+    padding: 5px 0;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        &:hover {
+          background-image: linear-gradient(rgba(255, 255, 255, 0.07) 0 0);
+        }
+        a :global(svg) {
+          vertical-align: middle;
+          margin-left: 10px;
+        }
+        a,
+        :global(button) {
+          display: inline-block;
+          padding: 10px 15px;
+          background: none;
+          border: none;
+          text-decoration: none;
+          cursor: pointer;
+          color: var(--menu-text-color);
+          width: 100%;
+          text-align: left;
+          font-size: functions.toRem(14);
+        }
+      }
     }
   }
 </style>
