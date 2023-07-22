@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import { browser } from '$app/environment';
   import { LogoutButton, Navigation } from '$components';
   import { page } from '$app/stores';
-  import { BookTemplate, ChevronDown, ExternalLink } from 'lucide-svelte';
+  import { ChevronDown, ExternalLink } from 'lucide-svelte';
   import { tippy } from '$actions';
 
   $: user = $page.data.user;
