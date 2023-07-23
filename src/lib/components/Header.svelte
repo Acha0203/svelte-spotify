@@ -30,6 +30,7 @@
           placement: 'bottom-end',
           interactive: true,
           theme: 'menu',
+          hideOnPopperBlur: true,
         }}
       >
         {#if user?.images && user.images.length > 0}
