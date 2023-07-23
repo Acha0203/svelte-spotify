@@ -16,14 +16,14 @@
   $: {
     if (data.newReleases) {
       sections.push({
-        title: 'New Releases',
+        title: '新しい曲を聴いてみよう',
         path: '/sections/new-releases',
         items: data.newReleases.albums.items,
       });
     }
     if (data.featuredPlaylists) {
       sections.push({
-        title: 'Featured Playlists',
+        title: 'おすすめプレイリスト',
         path: '/sections/featured-playlists',
         items: data.featuredPlaylists.playlists.items,
       });
@@ -40,12 +40,13 @@
     });
     if (data.userPlaylists) {
       sections.push({
-        title: 'Your Playlists',
+        title: 'あなたのプレイリスト',
         path: '/playlists',
         items: data.userPlaylists.items,
       });
     }
   }
+  $: console.log(data)
 </script>
 
 {#each sections as section}
@@ -56,7 +57,8 @@
       </div>
       <div class="left">
         <Button element="a" href={section.path} variant="outline"
-          >See All <span class="visually-hidden">{section.title}</span></Button
+          >すべて表示<span class="visually-hidden">{section.title}</span
+          ></Button
         >
       </div>
     </div>
