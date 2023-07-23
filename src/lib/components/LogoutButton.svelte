@@ -17,5 +17,5 @@
     }
   }}
 >
-  <button type="submit">Logout</button>
+  <button type="submit">ログアウト</button>
 </form>

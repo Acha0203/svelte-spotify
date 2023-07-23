@@ -23,17 +23,17 @@
   }[] = [
     {
       path: '/',
-      label: 'Home',
+      label: 'ホーム',
       icon: Home,
     },
     {
       path: '/search',
-      label: 'Search',
+      label: '検索',
       icon: Search,
     },
     {
       path: '/playlists',
-      label: 'Playlists',
+      label: 'プレイリスト',
       icon: ListMusic,
     },
   ];

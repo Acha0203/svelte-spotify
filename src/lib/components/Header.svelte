@@ -48,11 +48,11 @@
               href={user?.external_urls.spotify}
               target="_blank"
               rel="noopener noreferrer"
-              >View on Spotify
+              >Spotifyで表示
               <ExternalLink focusable="false" aria-hidden size={20} />
             </a>
           </li>
-          <li><a href="/profile">View Profile</a></li>
+          <li><a href="/profile">プロフィール</a></li>
           <li><LogoutButton /></li>
         </ul>
       </div>
