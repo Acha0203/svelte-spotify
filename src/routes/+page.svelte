@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Button } from '$components';
-  import { element } from 'svelte/internal';
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -71,3 +70,19 @@
     </div>
   </section>
 {/each}
+
+<style lang="scss">
+  .content-row {
+    .content-row-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      .section-title {
+        font-size: functions.toRem(22);
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+  }
+</style>
