@@ -9,3 +9,6 @@ declare namespace App {
   }
   // interface Platform {}
 }
+declare interface Window {
+  refreshPromise: Promise<Response> | null;
+}

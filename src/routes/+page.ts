@@ -1,9 +1,11 @@
 import type { PageLoad } from './$types';
+import { fetchRefresh } from '$helpers';
 
-export const load: PageLoad = async ({ fetch, parent }) => {
+export const load: PageLoad = async ({ fetch: _fetch, parent }) => {
+  const fetch = (path: string) => fetchRefresh(_fetch, path);
   const { user } = await parent();
-  const newReleases = await fetch('/api/spotify/browse/new-releases?limit=6');
-  const featuredPlaylists = await fetch(
+  const newReleases = fetch('/api/spotify/browse/new-releases?limit=6');
+  const featuredPlaylists = fetch(
     '/api/spotify/browse/featured-playlists?limit=6'
   );
   const userPlaylists = fetch(
@@ -23,7 +25,7 @@ export const load: PageLoad = async ({ fetch, parent }) => {
   );
 
   const [
-    newReleaseRes,
+    newReleasesRes,
     featuredPlaylistsRes,
     userPlaylistsRes,
     ...randomCatsRes
@@ -34,14 +36,12 @@ export const load: PageLoad = async ({ fetch, parent }) => {
     ...randomCatsPromises,
   ]);
 
-  console.log(randomCatsRes);
-
   return {
-    newReleases: newReleaseRes.ok
-      ? (newReleaseRes.json() as Promise<SpotifyApi.ListOfNewReleasesResponse>)
+    newReleases: newReleasesRes.ok
+      ? (newReleasesRes.json() as Promise<SpotifyApi.ListOfNewReleasesResponse>)
       : undefined,
     featuredPlaylists: featuredPlaylistsRes.ok
-      ? (featuredPlaylists.json() as Promise<SpotifyApi.ListOfFeaturedPlaylistsResponse>)
+      ? (featuredPlaylistsRes.json() as Promise<SpotifyApi.ListOfFeaturedPlaylistsResponse>)
       : undefined,
     userPlaylists: userPlaylistsRes.ok
       ? (userPlaylistsRes.json() as Promise<SpotifyApi.ListOfUsersPlaylistsResponse>)
