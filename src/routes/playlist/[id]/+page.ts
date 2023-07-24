@@ -7,9 +7,13 @@ export const load: PageLoad = async ({
   params,
   depends,
   route,
+  url,
 }) => {
   depends(`app:${route.id}`);
   const fetch = (path: string) => fetchRefresh(_fetch, path);
+
+  const limit = 100;
+  const page = url.searchParams.get('page');
 
   const playlistRes = await fetch(`/api/spotify/playlists/${params.id}`);
 
@@ -19,6 +23,20 @@ export const load: PageLoad = async ({
 
   const playlistResJSON: SpotifyApi.SinglePlaylistResponse =
     await playlistRes.json();
+
+  if (page && page !== '1') {
+    const tracksRes = await fetch(
+      `/api/spotify/playlists/${params.id}/tracks?${new URLSearchParams({
+        limit: `${limit}`,
+        offset: `${limit * (Number(page) - 1)}`,
+      }).toString()}`
+    );
+    if (!tracksRes.ok) {
+      throw error(tracksRes.status, 'Failed to load playlist!');
+    }
+    const tracksResJSON = await tracksRes.json();
+    playlistResJSON.tracks = tracksResJSON;
+  }
 
   let color = null;
   if (playlistResJSON.images.length > 0) {
