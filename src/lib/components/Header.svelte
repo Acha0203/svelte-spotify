@@ -52,7 +52,7 @@
               <ExternalLink focusable="false" aria-hidden size={20} />
             </a>
           </li>
-          <li><a href="/profile">プロフィール</a></li>
+          <li><a href="/profile">Profile</a></li>
           <li><LogoutButton /></li>
         </ul>
       </div>
@@ -123,6 +123,11 @@
           width: 100%;
           text-align: left;
           font-size: functions.toRem(14);
+          border-radius: 0;
+          font-weight: 400;
+          &.hover {
+            background-image: none;
+          }
         }
       }
     }
