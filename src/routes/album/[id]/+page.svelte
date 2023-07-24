@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { getCopyrightSymbol } from '$helpers';
+  // import { getCopyrightSymbol } from '$helpers';
   import { ItemPage } from '$components';
   import type { PageData } from './$types';
 
   export let data: PageData;
 
   $: album = data.album;
-  $: console.log(album);
+  $: color = data.color;
 </script>
 
 <ItemPage
   title={album.name}
   type={album.album_type}
-  color={'orange'}
+  {color}
   image={album.images.length > 0 ? album.images[0].url : undefined}
 >
   <p class="meta" slot="meta">
