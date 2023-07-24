@@ -18,7 +18,14 @@
   }
 </script>
 
-<button bind:this={button} on:click on:mouseover on:focus on:keydown {...$$restProps}>
+<button
+  bind:this={button}
+  on:click
+  on:mouseover
+  on:focus
+  on:keydown
+  {...$$restProps}
+>
   <svelte:component
     this={icon}
     color="var(--text-color)"
