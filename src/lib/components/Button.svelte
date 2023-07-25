@@ -6,26 +6,33 @@
 
   type Element = $$Generic<'button' | 'a'>;
 
-  interface ButtonCompnentElements {
+  interface ButtonComponentElements {
     button: HTMLButtonAttributes;
     a: HTMLAnchorAttributes;
   }
 
-  type $$Props = ButtonCompnentElements[Element] & {
+  type $$Props = ButtonComponentElements[Element] & {
     element: Element;
     variant?: 'solid' | 'outline' | 'danger';
     className?: string;
   };
+
   export let element: Element;
   export let variant: 'solid' | 'outline' | 'danger' = 'solid';
   export let className: string = '';
+
+  let node: HTMLAnchorElement | HTMLButtonElement;
+
+  export function focus() {
+    node.focus();
+  }
 </script>
 
 <svelte:element
   this={element}
+  bind:this={node}
   class="button button-{variant} {className}"
   on:click
-  role={element}
   {...$$restProps}
 >
   <slot />
