@@ -3,7 +3,9 @@
   import { page } from '$app/stores';
   import { Button, ItemPage } from '$components';
   import TrackList from '$components/TrackList.svelte';
+  import { toasts } from '$stores';
   import { Heart } from 'lucide-svelte';
+  import { tick } from 'svelte';
   import type { ActionData, PageData } from './$types';
 
   export let data: PageData;
@@ -40,7 +42,7 @@
     if (res.ok) {
       tracks = { ...resJSON, items: [...tracks.items, ...resJSON.items] };
     } else {
-      alert(resJSON.error.message || 'Could not load data!');
+      toasts.error(resJSON.error.message || 'Could not load data!');
     }
     isLoading = false;
   };
@@ -73,11 +75,20 @@
           isLoadingFollow = true;
           return async ({ result }) => {
             isLoadingFollow = false;
-            await applyAction(result);
-            followButton.focus();
             if (result.type === 'success') {
+              await applyAction(result);
               isFollowing = !isFollowing;
+            } else if (result.type === 'failure') {
+              if (typeof result.data?.followError === 'string') {
+                toasts.error(result.data?.followError);
+              } else {
+                toasts.error('An unknown error occurred.');
+              }
+              await tick();
+            } else {
+              await applyAction(result);
             }
+            followButton.focus();
           };
         }}
       >
