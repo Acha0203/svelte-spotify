@@ -1,20 +1,16 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms';
+  import { invalidateAll } from '$app/navigation';
   import { page } from '$app/stores';
-  import {
-    Button,
-    ItemPage,
-    Modal,
-    PlaylistForm,
-    TrackList,
-  } from '$components';
+  import { Button, ItemPage, Modal } from '$components';
+  import PlaylistForm from '$components/PlaylistForm.svelte';
+  import TrackList from '$components/TrackList.svelte';
   import { toasts } from '$stores';
   import { Heart } from 'lucide-svelte';
+  import MicroModal from 'micromodal';
   import { tick } from 'svelte';
   import type { ActionData, PageData } from './$types';
   import type { ActionData as EditActionData } from './edit/$types';
-  import MicroModal from 'micromodal';
-  import { invalidate } from '$app/navigation';
 
   export let data: PageData;
   export let form: ActionData | EditActionData;
@@ -91,6 +87,7 @@
           isLoadingFollow = true;
           return async ({ result }) => {
             isLoadingFollow = false;
+
             if (result.type === 'success') {
               await applyAction(result);
               isFollowing = !isFollowing;
@@ -105,6 +102,7 @@
               await applyAction(result);
             }
             followButton.focus();
+            invalidateAll();
           };
         }}
       >
@@ -183,7 +181,8 @@
     form={form && 'editForm' in form ? form : null}
     on:success={() => {
       MicroModal.close('edit-playlist-modal');
-      invalidate(`/api/spotify/playlists/${playlist.id}`);
+      // invalidate(`/api/spotify/playlists/${playlist.id}`);
+      invalidateAll();
     }}
   />
 </Modal>

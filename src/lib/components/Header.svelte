@@ -5,13 +5,17 @@
   import { ChevronDown, ExternalLink } from 'lucide-svelte';
   import { tippy } from '$actions';
 
+  export let userAllPlaylists:
+    | SpotifyApi.PlaylistObjectSimplified[]
+    | undefined;
+
   $: user = $page.data.user;
 </script>
 
 <div class="content">
   <div class="left">
     {#if browser}
-      <Navigation desktop={false} />
+      <Navigation desktop={false} {userAllPlaylists} />
     {/if}
   </div>
   <div class="right">
@@ -48,11 +52,11 @@
               href={user?.external_urls.spotify}
               target="_blank"
               rel="noopener noreferrer"
-              >Spotifyで表示
+              >View on Spotify
               <ExternalLink focusable="false" aria-hidden size={20} />
             </a>
           </li>
-          <li><a href="/profile">Profile</a></li>
+          <li><a href="/profile">View Profile</a></li>
           <li><LogoutButton /></li>
         </ul>
       </div>
@@ -125,7 +129,7 @@
           font-size: functions.toRem(14);
           border-radius: 0;
           font-weight: 400;
-          &.hover {
+          &:hover {
             background-image: none;
           }
         }

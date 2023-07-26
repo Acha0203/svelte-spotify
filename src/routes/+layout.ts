@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = ({ data, url }) => {
-  const { user } = data || {};
+  const { user, userAllPlaylists } = data || {};
   if (user && url.pathname === '/login') {
     throw redirect(307, '/');
   }
@@ -12,5 +12,6 @@ export const load: LayoutLoad = ({ data, url }) => {
 
   return {
     user,
+    userAllPlaylists,
   };
 };
