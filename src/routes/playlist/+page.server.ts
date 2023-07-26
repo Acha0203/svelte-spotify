@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-  addItem: async ({ request, cookies, url }) => {
+  addItem: async ({ request, cookies, url, fetch }) => {
     const data = await request.formData();
     const track = data.get('track');
     const playlist = data.get('playlist');
@@ -21,12 +21,13 @@ export const actions: Actions = {
         },
       }
     );
+
     if (!res.ok) {
       throw redirect(
         303,
         redirectTo
           ? `${redirectTo}?error=${res.statusText}`
-          : `/playlists/${playlist}?error=${res.statusText}`
+          : `/playlist/${playlist}?error=${res.statusText}`
       );
     }
 
@@ -35,7 +36,7 @@ export const actions: Actions = {
     } else {
       throw redirect(
         303,
-        `/playlists/${playlist}?success=Track added successfully!`
+        `/playlist/${playlist}?success=Track added successfully!`
       );
     }
   },
