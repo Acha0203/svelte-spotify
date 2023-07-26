@@ -1,7 +1,6 @@
 <script lang="ts">
-  // import { getCopyrightSymbol } from '$helpers';
-  import { ItemPage } from '$components';
-  import TrackList from '$components/TrackList.svelte';
+  import { getCopyrightSymbol } from '$helpers';
+  import { ItemPage, TrackList } from '$components';
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -26,8 +25,13 @@
     >
   </p>
 
-  <TrackList tracks={album.tracks.items} />
-  
+  <TrackList
+    tracks={album.tracks.items}
+    userPlaylists={data.userAllPlaylists?.filter(
+      (pl) => pl.owner.id === data.user?.id
+    )}
+  />
+
   <div class="credits">
     <p class="date">
       {new Date(album.release_date).toLocaleDateString('en', {
@@ -36,7 +40,7 @@
     </p>
     {#each album.copyrights as copyright}
       <p class="copyright">
-        <!-- {getCopyrightSymbol(copyright.type)} -->
+        {getCopyrightSymbol(copyright.type)}
         {copyright.text}
       </p>
     {/each}
