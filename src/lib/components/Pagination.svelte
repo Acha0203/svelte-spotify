@@ -19,7 +19,7 @@
       element="button"
       variant="outline"
       disabled={isLoading}
-      on:click={() => dispatch('loadmore')}
+      on:click={() => dispatch('loadmore', {})}
     >
       Load More <span class="visually-hidden">Items</span>
     </Button>
