@@ -355,6 +355,25 @@
       .actions-column {
         width: 30px;
         margin-left: 15px;
+        &:not(.is-owner) {
+          :global(html.no-js) & {
+            width: 200px;
+            @include breakpoint.down('md') {
+              margin-left: 0;
+              width: 100%;
+            }
+          }
+        }
+        .add-pl-button {
+          :global(html.no-js) & {
+            display: none;
+          }
+        }
+        .playlists-menu {
+          :global(html.no-js) & {
+            display: block !important;
+          }
+        }
         .add-pl-button,
         .remove-pl-button {
           background: none;
@@ -374,7 +393,19 @@
         }
         .playlists-menu-content {
           padding: 15px;
+          :global(html.no-js) & {
+            padding: 0;
+          }
+          form {
+            :global(html.no-js) & {
+              display: flex;
+              align-items: center;
+            }
+          }
           .field {
+            :global(html.no-js) & {
+              flex: 1;
+            }
             select {
               width: 100%;
               height: 35px;
@@ -384,6 +415,10 @@
           .submit-button {
             margin-top: 10px;
             text-align: right;
+            :global(html.no-js) & {
+              margin-top: 0;
+              margin-left: 10px;
+            }
           }
         }
       }
