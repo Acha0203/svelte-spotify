@@ -1,4 +1,4 @@
-import { SPOTIFY_BASE_URL } from '$env/static/private';
+import { VITE_SPOTIFY_BASE_URL } from '$env/static/private';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
@@ -10,7 +10,7 @@ export const actions: Actions = {
     const redirectTo = url.searchParams.get('redirect');
 
     const res = await fetch(
-      `${SPOTIFY_BASE_URL}/playlists/${playlist}/tracks`,
+      `${VITE_SPOTIFY_BASE_URL}/playlists/${playlist}/tracks`,
       {
         method: 'POST',
         body: JSON.stringify({
