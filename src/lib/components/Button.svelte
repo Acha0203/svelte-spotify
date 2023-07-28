@@ -32,6 +32,8 @@
   this={element}
   bind:this={node}
   class="button button-{variant} {className}"
+  role="button"
+  tabindex="0"
   on:click
   {...$$restProps}
 >

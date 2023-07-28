@@ -95,6 +95,8 @@
       on:click={closeMenu}
       on:keyup={handleEscape}
       transition:fade={{ duration: 200 }}
+      role="menu"
+      tabindex="0"
     />
   {/if}
   <nav aria-label="Main">
@@ -113,6 +115,8 @@
       class:is-hidden={!isOpen}
       style:visibility={isOpen ? 'visible' : 'hidden'}
       on:keyup={handleEscape}
+      role="menu"
+      tabindex="0"
     >
       {#if !desktop}
         <IconButton
