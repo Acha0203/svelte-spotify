@@ -29,7 +29,6 @@ const config = {
       $stores: 'src/lib/stores',
     },
     prerender: {
-      enabled: true,
       pages: [
         '/',
         '/album',
