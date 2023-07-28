@@ -12,7 +12,11 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"@types/micromodal": "^0.3.3",
 		"@types/node": "^20.4.2",
+		"@types/nprogress": "^0.2.0",
+		"@types/sharp": "^0.32.0",
+		"@types/uniqid": "^5.3.2",
 		"sass": "^1.64.0",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
@@ -27,7 +31,12 @@
 		"@types/spotify-api": "^0.0.22",
 		"@unsass/breakpoint": "^2.3.0",
 		"lucide-svelte": "^0.262.0",
+		"micromodal": "^0.4.10",
 		"modern-normalize": "^2.0.0",
-		"pkce-gen": "^1.1.0"
+		"nprogress": "^0.2.0",
+		"pkce-gen": "^1.1.0",
+		"sharp": "^0.32.4",
+		"tippy.js": "^6.3.7",
+		"uniqid": "^5.4.0"
 	}
 }
