@@ -28,6 +28,18 @@ const config = {
       $helpers: 'src/lib/helpers',
       $stores: 'src/lib/stores',
     },
+    prerender: {
+      enabled: true,
+      pages: [
+        '/',
+        '/album',
+        '/artist',
+        '/playlist',
+        'playlists',
+        '/profile',
+        '/search',
+      ], // ここにプリレンダリングするルートを列挙します
+    },
   },
 };
 
