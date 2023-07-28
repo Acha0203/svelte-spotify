@@ -8,7 +8,8 @@
     '/album/[id]',
     '/playlist/[id]',
     '/artist/[id]',
-    'search/[query]',
+    '/search/[query]',
+    '/[list=list]/[...rest]',
   ];
 </script>
 
