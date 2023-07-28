@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": { "cache-control": "s-maxage=0" }
+    },
+    {
+      "src": "/",
+      "dest": "/",
+      "headers": { "cache-control": "s-maxage=0" }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/404"
+    }
+  ]
+}
