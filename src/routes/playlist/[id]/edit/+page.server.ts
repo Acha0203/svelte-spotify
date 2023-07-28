@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { SPOTIFY_BASE_URL } from '$env/static/private';
+import { VITE_SPOTIFY_BASE_URL } from '$env/static/private';
 
 export const actions: Actions = {
   default: async ({ fetch, request, cookies, url, params }) => {
@@ -19,7 +19,7 @@ export const actions: Actions = {
       });
     }
 
-    const res = await fetch(`${SPOTIFY_BASE_URL}/playlists/${params.id}`, {
+    const res = await fetch(`${VITE_SPOTIFY_BASE_URL}/playlists/${params.id}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${cookies.get('access_token')}`,

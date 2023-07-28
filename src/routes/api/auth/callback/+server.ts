@@ -1,9 +1,9 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import {
-  BASE_URL,
-  SPOTIFY_APP_CLIENT_ID,
-  SPOTIFY_APP_CLIENT_SECRET,
+  VITE_BASE_URL,
+  VITE_SPOTIFY_APP_CLIENT_ID,
+  VITE_SPOTIFY_APP_CLIENT_SECRET,
 } from '$env/static/private';
 
 export const GET: RequestHandler = async ({ url, cookies, fetch }) => {
@@ -23,15 +23,15 @@ export const GET: RequestHandler = async ({ url, cookies, fetch }) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${Buffer.from(
-        `${SPOTIFY_APP_CLIENT_ID}:${SPOTIFY_APP_CLIENT_SECRET}`
+        `${VITE_SPOTIFY_APP_CLIENT_ID}:${VITE_SPOTIFY_APP_CLIENT_SECRET}`
       ).toString('base64')}`,
     },
     body: new URLSearchParams({
       code: code || '',
-      redirect_uri: `${BASE_URL}/api/auth/callback`,
+      redirect_uri: `${VITE_BASE_URL}/api/auth/callback`,
       grant_type: 'authorization_code',
       code_verifier: storedChallengeVerifier || '',
-      client_id: SPOTIFY_APP_CLIENT_ID,
+      client_id: VITE_SPOTIFY_APP_CLIENT_ID,
     }),
   });
   const responseJSON = await response.json();

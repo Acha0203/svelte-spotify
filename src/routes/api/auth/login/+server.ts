@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import pkce from 'pkce-gen';
 import type { RequestHandler } from './$types';
-import { SPOTIFY_APP_CLIENT_ID, BASE_URL } from '$env/static/private';
+import { VITE_SPOTIFY_APP_CLIENT_ID, VITE_BASE_URL } from '$env/static/private';
 
 const generateRandomString = (length: number) => {
   let randomString = '';
@@ -29,9 +29,9 @@ export const GET: RequestHandler = ({ cookies }) => {
     307,
     `https://accounts.spotify.com/authorize?${new URLSearchParams({
       response_type: 'code',
-      client_id: SPOTIFY_APP_CLIENT_ID,
+      client_id: VITE_SPOTIFY_APP_CLIENT_ID,
       scope,
-      redirect_uri: `${BASE_URL}/api/auth/callback`,
+      redirect_uri: `${VITE_BASE_URL}/api/auth/callback`,
       state,
       code_challenge_method: 'S256',
       code_challenge: challenge.code_challenge,

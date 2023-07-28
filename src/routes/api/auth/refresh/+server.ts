@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 import {
-  SPOTIFY_APP_CLIENT_ID,
-  SPOTIFY_APP_CLIENT_SECRET,
+  VITE_SPOTIFY_APP_CLIENT_ID,
+  VITE_SPOTIFY_APP_CLIENT_SECRET,
 } from '$env/static/private';
 import { error, json } from '@sveltejs/kit';
 
@@ -13,7 +13,7 @@ export const GET: RequestHandler = async ({ cookies, fetch }) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${Buffer.from(
-        `${SPOTIFY_APP_CLIENT_ID}:${SPOTIFY_APP_CLIENT_SECRET}`
+        `${VITE_SPOTIFY_APP_CLIENT_ID}:${VITE_SPOTIFY_APP_CLIENT_SECRET}`
       ).toString('base64')}`,
     },
     body: new URLSearchParams({

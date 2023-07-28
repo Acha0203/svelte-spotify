@@ -1,4 +1,4 @@
-import { SPOTIFY_BASE_URL } from '$env/static/private';
+import { VITE_SPOTIFY_BASE_URL } from '$env/static/private';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
@@ -19,13 +19,16 @@ export const actions: Actions = {
       });
     }
 
-    const res = await fetch(`${SPOTIFY_BASE_URL}/users/${userID}/playlists`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${cookies.get('access_token')}`,
-      },
-      body: JSON.stringify({ name, description }),
-    });
+    const res = await fetch(
+      `${VITE_SPOTIFY_BASE_URL}/users/${userID}/playlists`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${cookies.get('access_token')}`,
+        },
+        body: JSON.stringify({ name, description }),
+      }
+    );
 
     if (!res.ok) {
       const errorJSON = await res.json();
