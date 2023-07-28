@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Vercel
 
 on:
   push:
@@ -24,15 +24,15 @@ jobs:
         env:
           VITE_SPOTIFY_APP_CLIENT_ID: ${{ secrets.VITE_SPOTIFY_APP_CLIENT_ID }}
           VITE_SPOTIFY_APP_CLIENT_SECRET: ${{ secrets.VITE_SPOTIFY_APP_CLIENT_SECRET }}
-          VITE_SPOTIFY_BASE_URL: ${{ vars.VITE_SPOTIFY_BASE_URL }}
-          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
+          VITE_SPOTIFY_BASE_URL: ${{ secrets.VITE_SPOTIFY_BASE_URL }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
         run: |
           npm run build
 
-          - name: Deploy
-          uses: amondnet/vercel-action@v19
-          with:
-            vercel-token: ${{ secrets.SVELTE_SPOTIFY_VERCEL_TOKEN }}
-            vercel-org-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_ORG_ID }}
-            vercel-project-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_PROJECT_ID }}
-            vercel-args: '--prod'
+      - name: Deploy
+        uses: amondnet/vercel-action@v19
+        with: 
+          vercel-token: ${{ secrets.SVELTE_SPOTIFY_VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
