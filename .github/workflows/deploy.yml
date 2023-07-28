@@ -22,6 +22,10 @@ jobs:
 
       - name: build
         env:
+          VITE_SPOTIFY_APP_CLIENT_ID: ${{ secrets.VITE_SPOTIFY_APP_CLIENT_ID }}
+          VITE_SPOTIFY_APP_CLIENT_SECRET: ${{ secrets.VITE_SPOTIFY_APP_CLIENT_SECRET }}
+          VITE_SPOTIFY_BASE_URL: ${{ vars.VITE_SPOTIFY_BASE_URL }}
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
           BASE_PATH: '/svelte-spotify'
         run: |
           npm run build
@@ -43,7 +47,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Deploy
         id: deployment
