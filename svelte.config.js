@@ -19,7 +19,7 @@ const config = {
     // See https://kit.svelte.dev/docs/adapters for more information about adapters.
     adapter: adapter(),
     paths: {
-      base: dev ? '' : '/acha0203.github.io/svelte-spotify',
+      base: dev ? '' : '/svelte-spotify',
     },
     alias: {
       $components: 'src/lib/components',
