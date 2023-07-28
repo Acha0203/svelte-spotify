@@ -10,5 +10,5 @@ export const load: PageServerLoad = async ({ fetch, cookies }) => {
     },
   });
 
-  console.log(await res.json());
+  // console.log(await res.json());
 };
