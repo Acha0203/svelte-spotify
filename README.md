@@ -1,4 +1,14 @@
-# create-svelte
+# Spotify Clone Site with SvelteKit
+
+I written these codes by learning the following Udemy course:
+
+<https://www.udemy.com/share/107OKo3@EgwsgLDj-jJ4caF_YoACp09OwBC1BN3y_09idlaY1aPeGO4PnT61Xk3OnTJ93RXCKw==/>
+
+## Demo
+
+![svelte-spotify](https://github.com/Acha0203/svelte-spotify/assets/74553433/eafb4560-bbaf-4be8-8581-851a02a336f7)
+
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
