@@ -7,7 +7,7 @@ export const load: LayoutLoad = ({ data, url }) => {
     throw redirect(307, '/');
   }
   if (!user && url.pathname !== '/login') {
-    throw redirect(307, '/svelte-spotify/login');
+    throw redirect(307, '/login');
   }
 
   return {
