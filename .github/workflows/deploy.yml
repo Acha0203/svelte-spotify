@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy
         uses: amondnet/vercel-action@v19
-        with: 
+        with:
           vercel-token: ${{ secrets.SVELTE_SPOTIFY_VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.SVELTE_SPOTIFY_VERCEL_PROJECT_ID }}
